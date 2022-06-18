@@ -6,12 +6,13 @@ public class eat {
     private int x;
     private int y;
 
-    boolean touch_snake = true;
+
     public eat(snake player) {
         this.random(player);
     }
 
     public void random(snake s) {
+        boolean touch_snake = true;
 
         while (touch_snake) {
             touch_snake=false;
