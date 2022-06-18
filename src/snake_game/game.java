@@ -6,8 +6,8 @@ import java.awt.event.KeyListener;
 import java.util.Objects;
 
 public class game implements KeyListener {
-    private final snake player;
-    private final food food;
+    private final snake snake;
+    private final eat food;
     private final graphics graphic;
     public static final int width = 30;
     public static final int height = 30;
@@ -15,8 +15,8 @@ public class game implements KeyListener {
 
     public game() {
         JFrame window = new JFrame();
-        player = new snake();
-        food = new food(player);
+        snake = new snake();
+        food = new eat(snake);
         graphic = new graphics(this);
         window.add(graphic);
         window.setTitle("snake game");
@@ -32,28 +32,28 @@ public class game implements KeyListener {
     public void update() {
         if (Objects.equals(graphic.status, "running")) {
             if (check_food()) {
-                player.grow();
-                food.random(player);
-            } else if (check_die() || checkcollision()) {
+                snake.grow();
+                food.random(snake);
+            } else if (check_die() || check_collision_self()) {
                 graphic.status = "end";
             } else {
-                player.move();
+                snake.move();
             }
         }
     }
 
     public boolean check_die() {
-        return player.getx() < 0 || player.getx() >= width * dimensions || player.gety() < 0 || player.gety() >= height * dimensions;
+        return snake.get_x() < 0 || snake.get_x() >= width * dimensions || snake.get_y() < 0 || snake.get_y() >= height * dimensions;
     }
 
     public boolean check_food() {
-        return player.getx() == food.getx() * dimensions && player.gety() == food.gety() * dimensions;
+        return snake.get_x() == food.getx() * dimensions && snake.get_y() == food.gety() * dimensions;
     }
 
-    public boolean checkcollision() {
-        for (int i = 1; i < player.getbody().size(); i++) {
-            if (player.getx() == player.body.get(i).x &&
-                    player.gety() == player.body.get(i).y) {
+    public boolean check_collision_self() {
+        for (int i = 1; i < snake.getbody().size(); i++) {
+            if (snake.get_x() == snake.body.get(i).x &&
+                    snake.get_y() == snake.body.get(i).y) {
                 return true;
             }
         }
@@ -69,18 +69,18 @@ public class game implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int keycode = e.getKeyCode();
         if (Objects.equals(graphic.status, "running")) {
-            if (keycode == KeyEvent.VK_UP&& !Objects.equals(player.getmove(), "d")) {
+            if (keycode == KeyEvent.VK_UP&& !Objects.equals(snake.get_move(), "d")) {
                 //up
-                player.up();
-            } else if (keycode == KeyEvent.VK_DOWN&& !Objects.equals(player.getmove(), "u")) {
+                snake.up();
+            } else if (keycode == KeyEvent.VK_DOWN&& !Objects.equals(snake.get_move(), "u")) {
                 //down
-                player.down();
-            } else if (keycode == KeyEvent.VK_LEFT&& !Objects.equals(player.getmove(), "r")) {
+                snake.down();
+            } else if (keycode == KeyEvent.VK_LEFT&& !Objects.equals(snake.get_move(), "r")) {
                 //left
-                player.left();
-            } else if (keycode == KeyEvent.VK_RIGHT&& !Objects.equals(player.getmove(), "l")) {
+                snake.left();
+            } else if (keycode == KeyEvent.VK_RIGHT&& !Objects.equals(snake.get_move(), "l")) {
                 //right
-                player.right();
+                snake.right();
             }
         }
         else
@@ -94,10 +94,10 @@ public class game implements KeyListener {
 
     }
     public snake getPlayer() {
-        return player;
+        return snake;
     }
 
-    public food getFood() {
+    public eat getFood() {
         return food;
     }
 

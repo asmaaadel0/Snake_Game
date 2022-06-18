@@ -10,7 +10,7 @@ public class graphics extends JPanel implements ActionListener {
 
     public String status;
     private final snake s;
-    private final food f;
+    private final eat f;
     private final game g;
 
     public graphics(game g)

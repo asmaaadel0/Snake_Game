@@ -2,24 +2,24 @@ package snake_game;
 
 import java.awt.*;
 
-public class food {
+public class eat {
     private int x;
     private int y;
 
-    public food(snake player) {
+    boolean touch_snake = true;
+    public eat(snake player) {
         this.random(player);
     }
 
     public void random(snake s) {
 
-        boolean onsnake = true;
-        while (onsnake) {
-            onsnake=false;
+        while (touch_snake) {
+            touch_snake=false;
             x = (int)(Math.random() * game.width - 1);
             y = (int)(Math.random() * game.height - 1);
             for (Rectangle r : s.body) {
                 if (r.x == x && r.y == y) {
-                    onsnake = true;
+                    touch_snake = true;
                     break;
                 }
             }

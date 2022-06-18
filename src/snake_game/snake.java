@@ -6,9 +6,6 @@ import java.util.Objects;
 
 public class snake {
     public ArrayList<Rectangle> body;
-    private int w = game.width;
-    private int h = game.height;
-    private int d = game.dimensions;
     private String move; //nothing up down left right
 
     public snake() {
@@ -17,7 +14,10 @@ public class snake {
         temp.setLocation(game.width / 2 * game.dimensions, game.height / 2 * game.dimensions);
         body.add(temp);
 
+        int d = game.dimensions;
         temp = new Rectangle(d, d);
+        int w = game.width;
+        int h = game.height;
         temp.setLocation((w / 2 - 1) * d, (h / 2) * d);
         body.add(temp);
 
@@ -66,15 +66,15 @@ public class snake {
         return body;
     }
 
-    public int getx() {
+    public int get_x() {
         return body.get(0).x;
     }
 
-    public int gety() {
+    public int get_y() {
         return body.get(0).y;
     }
 
-    public String getmove() {
+    public String get_move() {
         return move;
     }
 
