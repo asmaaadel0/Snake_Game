@@ -2,7 +2,7 @@
 
 - [About](#about)
 - [Gaming System](#gaming-system)
-- [screen Shot from the game](#screen-shots)
+- [ScreenShots from the game](#screen-shots)
 - [Contributors](#Contributors)
 
 ## About <a name = "about"></a>
@@ -15,7 +15,7 @@
 - the player tries to eat food for the snake to grow up, in case the snake hits the wall or himself, he will die.
 - The player Moves with the ↑←↓→
 
-## screen Shot from the game: <a name = "screan-shots"></a>
+## ScreenShots from the game: <a name = "screan-shots"></a>
 
 <h3 align='left'>Main Screen</h3>
 
