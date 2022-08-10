@@ -9,7 +9,7 @@
 
 - Snake Game is a simple children game implemented with JAVA.
 
-## Gaming System <a name = "#gaming-system"></a>
+## Gaming System <a name = "gaming-system"></a>
 
 - The player should eat the food at the coordinate point, but don't eat himself.
 - the player tries to eat food for the snake to grow up, in case the snake hits the wall or himself, he will die.
